@@ -1,0 +1,16 @@
+.custom-range::-webkit-slider-thumb {
+    background-color: var(--thumb-color, initial); /* Default thumb color or set using style prop */
+  }
+  
+  .custom-range::-moz-range-thumb {
+    background-color: var(--thumb-color, initial);
+  }
+  
+  .custom-range::-ms-thumb {
+    background-color: var(--thumb-color, initial);
+  }
+  
+  .custom-range::-webkit-slider-runnable-track {
+    background-color: var(--track-fill-color, initial); /* Default track fill color or set using style prop */
+  }
+  

@@ -1,0 +1,83 @@
+.chat-btn {
+  position: fixed;
+  right: 25px;
+  bottom: 20px;
+  cursor: pointer;
+  background-color: rgb(0, 0, 0);
+  border-radius: 50px;
+  width: 60px;
+  height: 60px;
+  color: #ffffff;
+  font-size: 32px;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chat-btn .close {
+  display: none;
+}
+#check:checked ~ .chat-btn * {
+  display: block;
+}
+
+#check:checked ~ .chat-btn .comment {
+  display: none;
+}
+#check {
+  display: none !important;
+}
+#check:checked ~ .chat-wrapper {
+  opacity: 1;
+}
+.chat-wrapper {
+  padding: 10px;
+  opacity: 0;
+  position: fixed;
+  right: 80px;
+  bottom: 80px;
+  z-index: 4;
+  width: 350px;
+  transition: all 0.4s;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 0.1px solid rgb(210, 206, 206);
+}
+.chat-wrapper * {
+  margin: 5px;
+}
+
+.chat-header {
+  background-color: rgb(12, 12, 14);
+  padding: 13px;
+  margin-bottom: 10px;
+  border-radius: 5px 5px 0px 0px;
+  color: #fff;
+}
+
+.chat-form input,
+.chat-form textarea,
+.chat-form button {
+  margin-bottom: 10px;
+}
+
+.chat-form textarea {
+  resize: none;
+}
+
+.form-control:focus,
+.btn:focus {
+  box-shadow: none;
+}
+.chat-wrapper textarea {
+  resize: none;
+}
+.cht-msg{
+    max-height: 300px;
+    overflow: auto;
+}
+
+.TEST{
+  color: #1f7d8f;
+}
