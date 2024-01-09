@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Form,
-  Alert,
-  ListGroup,
-  Button,
-} from "react-bootstrap";
+import { Container, Row, Col, Form, Alert, ListGroup, Button } from "react-bootstrap";
 import CartItemComponent from "../../../components/CartItemComponent";
 
 const UserCartDetails = (props) => {
@@ -28,16 +20,14 @@ const UserCartDetails = (props) => {
               <h2>Payment method</h2>
               <Form.Select>
                 <option value="pp">PayPal</option>
-                <option value="cod">
-                  Cash On Delivery (delivery may be delayed)
-                </option>
+                <option value="cod">Cash On Delivery (delivery may be delayed)</option>
               </Form.Select>
             </Col>
             <Row>
               <Col>
                 <Alert className="mt-3" variant="danger">
-                  Not delivered. In order to make order, fill out your profile
-                  with correct address, city etc.
+                  Not delivered. In order to make order, fill out your profile with correct address,
+                  city etc.
                 </Alert>
               </Col>
               <Col>
@@ -51,7 +41,16 @@ const UserCartDetails = (props) => {
           <h2>Order items</h2>
           <ListGroup variant="flush">
             {Array.from({ length: 3 }).map((item, idx) => (
-              <CartItemComponent key={idx} />
+              <CartItemComponent
+                key={idx}
+                item={{
+                  image: { path: "image/tablet-category.png" },
+                  name: "Product Name",
+                  price: 10,
+                  count: 10,
+                  quantity: 10,
+                }}
+              />
             ))}
           </ListGroup>
         </Col>

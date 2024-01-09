@@ -1,34 +1,23 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import {
-  Row,
-  Col,
-  Container,
-  Image,
-  ListGroup,
-  Form,
-  Button,
-  Alert,
-} from "react-bootstrap";
+import { Row, Col, Container, Image, ListGroup, Form, Button, Alert } from "react-bootstrap";
 import { Rating } from "react-simple-star-rating";
 import AddedToCartMessageComponent from "../../components/AddedToCartMessageComponent";
 import image from "../../components/Static Data/images/monitors-category.png";
 import ImageZoom from "js-image-zoom";
 
 const ProductDetail = (props) => {
-  // const { id } = useParams();
-  const options ={
-    width:400,
-    zoomWidth:500,
-    fillContainer:true,
-    scale:2,
-    offset:{vertical:0,horizontal:0}
-  }
+  const options = {
+    width: 400,
+    zoomWidth: 500,
+    fillContainer: true,
+    scale: 2,
+    offset: { vertical: 0, horizontal: 0 },
+  };
   useEffect(() => {
-    new ImageZoom(document.getElementById("first"),options);
-    new ImageZoom(document.getElementById("second"),options);
-    new ImageZoom(document.getElementById("third"),options);
-    new ImageZoom(document.getElementById("fourth"),options);
+    new ImageZoom(document.getElementById("first"), options);
+    new ImageZoom(document.getElementById("second"), options);
+    new ImageZoom(document.getElementById("third"), options);
+    new ImageZoom(document.getElementById("fourth"), options);
   }, []);
   return (
     <Container>
@@ -61,10 +50,7 @@ const ProductDetail = (props) => {
                 <ListGroup.Item>
                   Price <span className="fw-bold">$345</span>
                 </ListGroup.Item>
-                <ListGroup.Item>
-                  Porta ac consectetur ac Porta ac consectetur acPorta ac
-                  consectetur ac
-                </ListGroup.Item>
+                <ListGroup.Item>Porta ac consectetur ac Porta ac consectetur acPorta ac consectetur ac</ListGroup.Item>
               </ListGroup>
             </Col>
             <Col md={4}>
@@ -92,10 +78,10 @@ const ProductDetail = (props) => {
             <Col className="mt-5">
               <h5>REVIEWS</h5>
               <ListGroup variant="flush">
-                {Array.from({ length: 15 }).map((item, idx) => {
+                {Array.from({ length: 15 }).map((item, index) => {
                   return (
                     <>
-                      <ListGroup.Item key={idx}>
+                      <ListGroup.Item key={index}>
                         USer Name <br />
                         <Rating readonly size={15} initialValue={4} />
                         <br />

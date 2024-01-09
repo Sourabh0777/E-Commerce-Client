@@ -6,7 +6,16 @@ import PriceFilterComponent from "../../components/filterQueryResultOptions/Pric
 import RatingFilterComponent from "../../components/filterQueryResultOptions/RatingFilterComponent";
 import CategoryFilterComponent from "../../components/filterQueryResultOptions/CategoryFilterComponent";
 import AttributesFilterComponent from "../../components/filterQueryResultOptions/AttributesFilterComponent";
+import axios from "axios";
 const ProductsList = () => {
+  axios
+    .get("/api/products")
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   return (
     <Container fluid>
       <Row>
@@ -16,7 +25,6 @@ const ProductsList = () => {
               <SortOptionsComponent />
             </ListGroup.Item>
             <ListGroup.Item>
-              {" "}
               FILTER: <br />
               <PriceFilterComponent />
             </ListGroup.Item>

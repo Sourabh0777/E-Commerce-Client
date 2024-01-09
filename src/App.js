@@ -33,11 +33,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //Utils
 import ScrollTop from "./utils/ScrollTop";
 
-
 function App() {
   return (
     <BrowserRouter>
-    <ScrollTop/>
+      <ScrollTop />
       <Header />
       <Routes>
         <Route element={<RoutesWithChatComponent />}>
@@ -54,16 +53,8 @@ function App() {
         <Route element={<ProtectedRoutesComponent admin={false} />}>
           <Route path="/user" exact element={<UserProfile />} />
           <Route path="/user/my-orders" exact element={<UserOrders />} />
-          <Route
-            path="/user/cart-details"
-            exact
-            element={<UserCartDetails />}
-          />
-          <Route
-            path="/user/order-details"
-            exact
-            element={<UserOrderDetails />}
-          />
+          <Route path="/user/cart-details" exact element={<UserCartDetails />} />
+          <Route path="/user/order-details" exact element={<UserOrderDetails />} />
         </Route>
 
         {/* Admin Routes */}
@@ -72,22 +63,10 @@ function App() {
           <Route path="/admin/users" exact element={<AdminUser />} />
           <Route path="/admin/edit-user" exact element={<AdminEditUser />} />
           <Route path="/admin/products" exact element={<AdminProducts />} />
-          <Route
-            path="/admin/create-new-product"
-            exact
-            element={<AdminCreateProduct />}
-          />
-          <Route
-            path="/admin/edit-product"
-            exact
-            element={<AdminEditProducts />}
-          />
+          <Route path="/admin/create-new-product" exact element={<AdminCreateProduct />} />
+          <Route path="/admin/edit-product" exact element={<AdminEditProducts />} />
           <Route path="/admin/orders" exact element={<AdminOrders />} />
-          <Route
-            path="/admin/order-details"
-            exact
-            element={<AdminOrderDetails />}
-          />
+          <Route path="/admin/order-details/:id" exact element={<AdminOrderDetails />} />
           <Route path="/admin/chats" exact element={<AdminChat />} />
           <Route path="/admin/analytics" exact element={<AdminAnalytics />} />
         </Route>
