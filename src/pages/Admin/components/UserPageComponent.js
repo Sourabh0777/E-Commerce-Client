@@ -63,7 +63,7 @@ const UserPageComponent = ({ fetchUser, deleteUser }) => {
                     {user.isAdmin ? (
                       <i className="bi bi-check-lg text-success" />
                     ) : (
-                      <i className="bi bi-check-lg text-danger" />
+                      <i className="bi bi-x-lg text-danger" />
                     )}
                   </td>
                   <td>

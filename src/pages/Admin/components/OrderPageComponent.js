@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import AdminLinksComponent from "../../../components/admin/AdminLinksComponent";
-import { useEffect } from "react";
-import { useState } from "react";
+
 const OrderPageComponent = ({ fetchOrders }) => {
   const [Orders, setOrders] = useState([]);
   useEffect(() => {
@@ -35,26 +34,31 @@ const OrderPageComponent = ({ fetchOrders }) => {
             </tr>
           </thead>
           <tbody>
-            {
-              Orders?.map((Order, idx) => (
-                <tr key={idx}>
-                  <td>{idx + 1}</td>
-                  <td>
-                    {Order.user !== null ? (
-                      <>
-                        {Order.user.name} {Order.user.lastName}
-                      </>
-                    ) : null}
-                  </td>
-                  <td>{Order.createdAt.substring(0, 10)}</td>
-                  <td>{Order.orderTotal ? <>{Order.orderTotal.cartSubTotal}</> : null}</td>
-                  <td>{Order.isDelivered ? <i className="bi bi-check-lg text-success"></i> : <i className="bi bi-check-lg text-danger"></i>}</td>
-                  <td>{Order.paymentMethod}</td>
-                  <td>
-                    <Link to={`/admin/order-details/${Order._id}`}>go to order</Link>
-                  </td>
-                </tr>
-              ))}
+            {Orders?.map((Order, idx) => (
+              <tr key={idx}>
+                <td>{idx + 1}</td>
+                <td>
+                  {Order.user !== null ? (
+                    <>
+                      {Order.user.name} {Order.user.lastName}
+                    </>
+                  ) : null}
+                </td>
+                <td>{Order.createdAt.substring(0, 10)}</td>
+                <td>{Order.orderTotal ? <>{Order.orderTotal.cartSubTotal}</> : null}</td>
+                <td>
+                  {Order.isDelivered ? (
+                    <i className="bi bi-check-lg text-success"></i>
+                  ) : (
+                    <i className="bi bi-x-lg text-danger"></i>
+                  )}
+                </td>
+                <td>{Order.paymentMethod}</td>
+                <td>
+                  <Link to={`/admin/order-details/${Order._id}`}>go to order</Link>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </Table>
       </Col>

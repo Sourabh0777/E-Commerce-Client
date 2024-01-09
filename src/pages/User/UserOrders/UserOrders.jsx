@@ -2,6 +2,9 @@ import React from "react";
 import { Row, Col, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 const UserOrders = (props) => {
+  const Order = {
+    _id: "asdasdsad",
+  };
   return (
     <Row className="m-5">
       <Col md={12}>
@@ -18,22 +21,20 @@ const UserOrders = (props) => {
             </tr>
           </thead>
           <tbody>
-            {["bi bi-check-lg text-success", "bi bi-x-lg text-danger"].map(
-              (item, idx) => (
-                <tr key={idx}>
-                  <td>{idx + 1}</td>
-                  <td>Mark Twain</td>
-                  <td>2022-09-12</td>
-                  <td>$124</td>
-                  <td>
-                    <i className={item}></i>
-                  </td>
-                  <td>
-                    <Link to="/user/order-details">go to order</Link>
-                  </td>
-                </tr>
-              )
-            )}
+            {["bi bi-check-lg text-success", "bi bi-x-lg text-danger"].map((item, idx) => (
+              <tr key={idx}>
+                <td>{idx + 1}</td>
+                <td>Mark Twain</td>
+                <td>2022-09-12</td>
+                <td>$124</td>
+                <td>
+                  <i className={item}></i>
+                </td>
+                <td>
+                  <Link to={`/user/order-details/${Order._id}`}>go to order</Link>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </Table>
       </Col>

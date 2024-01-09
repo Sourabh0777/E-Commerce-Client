@@ -12,9 +12,13 @@ const CartItemComponent = ({ item, orderCreated = false }) => {
             <b>{item.price}</b>
           </Col>
           <Col md={3}>
-            <Form.Select onChange={()=>{}} disabled={orderCreated} value={item.quantity}>
+            <Form.Select onChange={() => {}} disabled={orderCreated} value={item.quantity}>
               {[...Array(item.count).keys()].map((x) => {
-                return <option value={x + 1}>{x+1}</option>;
+                return (
+                  <option key={x} value={x + 1}>
+                    {x + 1}
+                  </option>
+                );
               })}
             </Form.Select>
           </Col>

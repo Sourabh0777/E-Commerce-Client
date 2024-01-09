@@ -54,7 +54,7 @@ function App() {
           <Route path="/user" exact element={<UserProfile />} />
           <Route path="/user/my-orders" exact element={<UserOrders />} />
           <Route path="/user/cart-details" exact element={<UserCartDetails />} />
-          <Route path="/user/order-details" exact element={<UserOrderDetails />} />
+          <Route path="/user/order-details/:id" exact element={<UserOrderDetails />} />
         </Route>
 
         {/* Admin Routes */}
