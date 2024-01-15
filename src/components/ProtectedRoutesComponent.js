@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import UserChatComponent from "./User/UserChatComponent";
+// import UserChatComponent from "./User/UserChatComponent";
 const ProtectedRoutesComponent = (props) => {
   let { admin } = props;
   if (admin) {

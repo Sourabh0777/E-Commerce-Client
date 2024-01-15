@@ -8,6 +8,7 @@ import Navbar from "react-bootstrap/Navbar";
 import InputGroup from "react-bootstrap/InputGroup";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";
+import { useSelector, useDispatch } from "react-redux";
 
 import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
@@ -18,14 +19,10 @@ const DUMMY_DATA = {
   option3: "Logout",
 };
 const Header = (props) => {
+  const cartCount = useSelector((store) => store.cart.value);
+
   return (
-    <Navbar
-      collapseOnSelect
-      expand="lg"
-      className="bg-body-tertiary"
-      bg="dark"
-      data-bs-theme="dark"
-    >
+    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
       <Container>
         <LinkContainer to="/">
           <Navbar.Brand>O-Caffe</Navbar.Brand>
@@ -64,7 +61,7 @@ const Header = (props) => {
             <LinkContainer to="/cart">
               <Nav.Link>
                 <Badge pill bg="danger">
-                  2
+                  {cartCount}
                 </Badge>
                 <ShoppingCartIcon />
                 Cart
@@ -74,11 +71,7 @@ const Header = (props) => {
               <NavDropdown.Item eventKey="/user" as={Link} to="/user">
                 {DUMMY_DATA.option1}
               </NavDropdown.Item>
-              <NavDropdown.Item
-                as={Link}
-                to="/user/my-orders"
-                eventKey="/user/my-orders"
-              >
+              <NavDropdown.Item as={Link} to="/user/my-orders" eventKey="/user/my-orders">
                 {DUMMY_DATA.option2}
               </NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/" eventKey="/">

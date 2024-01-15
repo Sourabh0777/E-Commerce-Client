@@ -4,8 +4,12 @@ import { Rating } from "react-simple-star-rating";
 import AddedToCartMessageComponent from "../../components/AddedToCartMessageComponent";
 import image from "../../components/Static Data/images/monitors-category.png";
 import ImageZoom from "js-image-zoom";
+import { useSelector, useDispatch } from "react-redux";
+import { incrementByAmount } from "../../redux/Slice/cartSlice";
 
 const ProductDetail = (props) => {
+  const cartCount = useSelector((store) => store.cart.value);
+  const dispatch = useDispatch();
   const options = {
     width: 400,
     zoomWidth: 500,
@@ -18,7 +22,11 @@ const ProductDetail = (props) => {
     new ImageZoom(document.getElementById("second"), options);
     new ImageZoom(document.getElementById("third"), options);
     new ImageZoom(document.getElementById("fourth"), options);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const addToCartHandler = () => {
+    dispatch(incrementByAmount(5));
+  };
   return (
     <Container>
       <AddedToCartMessageComponent />
@@ -50,7 +58,9 @@ const ProductDetail = (props) => {
                 <ListGroup.Item>
                   Price <span className="fw-bold">$345</span>
                 </ListGroup.Item>
-                <ListGroup.Item>Porta ac consectetur ac Porta ac consectetur acPorta ac consectetur ac</ListGroup.Item>
+                <ListGroup.Item>
+                  Porta ac consectetur ac Porta ac consectetur acPorta ac consectetur ac
+                </ListGroup.Item>
               </ListGroup>
             </Col>
             <Col md={4}>
@@ -69,7 +79,9 @@ const ProductDetail = (props) => {
                   </Form.Select>
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <Button variant="danger">Add to cart</Button>
+                  <Button variant="danger" onClick={addToCartHandler}>
+                    Add to cart
+                  </Button>
                 </ListGroup.Item>
               </ListGroup>
             </Col>
@@ -80,15 +92,15 @@ const ProductDetail = (props) => {
               <ListGroup variant="flush">
                 {Array.from({ length: 15 }).map((item, index) => {
                   return (
-                    <>
-                      <ListGroup.Item key={index}>
+                    <div key={index}>
+                      <ListGroup.Item>
                         USer Name <br />
                         <Rating readonly size={15} initialValue={4} />
                         <br />
                         04-08-2023 <br />
                         This is the comment
                       </ListGroup.Item>
-                    </>
+                    </div>
                   );
                 })}
               </ListGroup>

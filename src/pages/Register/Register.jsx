@@ -3,7 +3,7 @@ import {
   Container,
   Row,
   Col,
-  InputGroup,
+  // InputGroup,
   Form,
   Button,
   Spinner,
@@ -41,56 +41,24 @@ const Register = (props) => {
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="validationCustom01">
               <Form.Label>Your name</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                placeholder="Enter your name"
-                name="name"
-              />
-              <Form.Control.Feedback type="invalid">
-                Please enter a name
-              </Form.Control.Feedback>
+              <Form.Control required type="text" placeholder="Enter your name" name="name" />
+              <Form.Control.Feedback type="invalid">Please enter a name</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicLastName">
               <Form.Label>Your last name</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                placeholder="Enter your last name"
-                name="lastName"
-              />
-              <Form.Control.Feedback type="invalid">
-                Please enter your last name
-              </Form.Control.Feedback>
+              <Form.Control required type="text" placeholder="Enter your last name" name="lastName" />
+              <Form.Control.Feedback type="invalid">Please enter your last name</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
-              <Form.Control
-                name="email"
-                required
-                type="email"
-                placeholder="Enter email"
-              />
-              <Form.Control.Feedback type="invalid">
-                Please anter a valid email address
-              </Form.Control.Feedback>
+              <Form.Control name="email" required type="email" placeholder="Enter email" />
+              <Form.Control.Feedback type="invalid">Please anter a valid email address</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control
-                name="password"
-                required
-                type="password"
-                placeholder="Password"
-                minLength={6}
-                onChange={onChange}
-              />
-              <Form.Control.Feedback type="invalid">
-                Please anter a valid password
-              </Form.Control.Feedback>
-              <Form.Text className="text-muted">
-                Password should have at least 6 characters
-              </Form.Text>
+              <Form.Control name="password" required type="password" placeholder="Password" minLength={6} onChange={onChange} />
+              <Form.Control.Feedback type="invalid">Please anter a valid password</Form.Control.Feedback>
+              <Form.Text className="text-muted">Password should have at least 6 characters</Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPasswordRepeat">
               <Form.Label>Repeat Password</Form.Label>
@@ -102,9 +70,7 @@ const Register = (props) => {
                 minLength={6}
                 onChange={onChange}
               />
-              <Form.Control.Feedback type="invalid">
-                Both passwords should match
-              </Form.Control.Feedback>
+              <Form.Control.Feedback type="invalid">Both passwords should match</Form.Control.Feedback>
             </Form.Group>
 
             <Row className="pb-2">
@@ -115,13 +81,7 @@ const Register = (props) => {
             </Row>
 
             <Button type="submit">
-              <Spinner
-                as="span"
-                animation="border"
-                size="sm"
-                role="status"
-                aria-hidden="true"
-              />
+              <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />
               Submit
             </Button>
             <Alert show={true} variant="danger">
