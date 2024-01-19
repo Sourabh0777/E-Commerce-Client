@@ -1,0 +1,5 @@
+const AdminUser = (props) => {
+  const fetchUser = async (abCtrl) => {
+    const { data } = await axios.get("/api/user", { signal: abCtrl.signal });
+    return data;
+  };
