@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import Login from "../pages/Login/Login";
 import UserChatComponent from "./User/UserChatComponent";
 const ProtectedRoutesComponent = ({ admin }) => {
   const [isAuth, setIsAuth] = useState();
@@ -12,8 +11,8 @@ const ProtectedRoutesComponent = ({ admin }) => {
     axios
       .get(`/api/get-token`)
       .then(({ data }) => {
-        if (isMounted && data.token) {
-          setIsAuth(data.token);
+        if (isMounted && data.token.isAdmin) {
+          setIsAuth("admin");
         }
         return isAuth;
       })
@@ -28,7 +27,6 @@ const ProtectedRoutesComponent = ({ admin }) => {
     };
   }, []);
   if (loading) {
-    console.log("check if api is getting hit ");
     return <div>Loading...</div>;
   }
   if (isAuth === undefined) {

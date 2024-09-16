@@ -1,24 +1,27 @@
-import { createSlice } from "@reduxjs/toolkit";
-const userAlreadyLoggedInInfo = localStorage.getItem("userInfo");
-const userAlreadyLoggedInInfoSession = sessionStorage.getItem("userInfo");
+import { createSlice } from "@reduxjs/toolkit"
+const userAlreadyLoggedInInfo = localStorage.getItem("userInfo")
+const userAlreadyLoggedInInfoSession = sessionStorage.getItem("userInfo")
 
 const initialState = {
-  loginState: userAlreadyLoggedInInfo
-    ? JSON.parse(userAlreadyLoggedInInfo)
-    : userAlreadyLoggedInInfoSession
-    ? JSON.parse(userAlreadyLoggedInInfoSession)
-    : "User Data",
-};
+	loginState: userAlreadyLoggedInInfo
+		? JSON.parse(userAlreadyLoggedInInfo)
+		: userAlreadyLoggedInInfoSession
+			? JSON.parse(userAlreadyLoggedInInfoSession)
+			: "User Data",
+}
 export const loginUserSlice = createSlice({
-  name: "loginUser",
-  initialState,
-  reducers: {
-    loginUserAction: (state, action) => {
-      state.loginState = action.payload;
-      return;
-    },
-    logoutUserAction: (state, action) => {},
-  },
-});
-export const { loginUserAction, logoutUserAction } = loginUserSlice.actions;
-export default loginUserSlice.reducer;
+	name: "loginUser",
+	initialState,
+	reducers: {
+		loginUserAction: (state, action) => {
+			console.log("🚀 ~ action:", action)
+			state.loginState = action.payload
+			return
+		},
+		logoutUserAction: (state, action) => {
+			state.loginState = {}
+		},
+	},
+})
+export const {loginUserAction, logoutUserAction} = loginUserSlice.actions
+export default loginUserSlice.reducer

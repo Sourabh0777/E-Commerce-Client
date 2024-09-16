@@ -1,8 +1,7 @@
-import React from "react";
-import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Alert, Button, Col, Container, Form, Row } from "react-bootstrap";
 import Spinner from "react-bootstrap/Spinner";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginPageComponent = ({ loginUserApiRequest, dispatch, loginUserAction }) => {
   const navigate = useNavigate();
@@ -29,12 +28,14 @@ const LoginPageComponent = ({ loginUserApiRequest, dispatch, loginUserAction }) 
             loading: false,
           });
           if (res.success === "User logged in" && !res.userLoggedIn.isAdmin) {
+            console.log("user Login");
+            
             dispatch(loginUserAction(res.userLoggedIn));
-            // window.location.href="/user"
             navigate("/user", { replace: true });
           } else {
+            console.log("Admin Login");
+
             dispatch(loginUserAction(res.userLoggedIn));
-            // window.location.href="/admin/orders"
             navigate("/admin/orders", { replace: true });
           }
         })
