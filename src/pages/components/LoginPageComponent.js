@@ -43,7 +43,6 @@ const LoginPageComponent = ({ loginUserApiRequest, dispatch, loginUserAction }) 
           setLoginUserResponseState({
             error: error.response.data.message ? error.response.data.message : error.response.data,
           });
-          console.log();
         });
     }
     setValidated(true);
