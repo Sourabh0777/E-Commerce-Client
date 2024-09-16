@@ -1,31 +1,31 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import Cart from "./pages/Cart/Cart";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
-import Register from "./pages/Register/Register";
-import Cart from "./pages/Cart/Cart";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
 import ProductsList from "./pages/ProductsList/ProductsList";
+import Register from "./pages/Register/Register";
 //User Routes
-import UserProfile from "./pages/User/UserProfile/UserProfile";
 import UserCartDetails from "./pages/User/UserCartDetails/UserCartDetails";
 import UserOrderDetails from "./pages/User/UserOrderDetails/UserOrderDetails";
 import UserOrders from "./pages/User/UserOrders/UserOrders";
+import UserProfile from "./pages/User/UserProfile/UserProfile";
 //Admin Routes
-import AdminUser from "./pages/Admin/AdminUser/AdminUser";
-import AdminEditUser from "./pages/Admin/AdminEditUser/AdminEditUser";
-import AdminProducts from "./pages/Admin/AdminProducts/AdminProducts";
+import AdminChat from "./pages/Admin/AdminChat/AdminChat";
 import AdminCreateProduct from "./pages/Admin/AdminCreateProduct/AdminCreateProduct";
 import AdminEditProducts from "./pages/Admin/AdminEditProducts/AdminEditProducts";
-import AdminOrders from "./pages/Admin/AdminOrders/AdminOrders";
+import AdminEditUser from "./pages/Admin/AdminEditUser/AdminEditUser";
 import AdminOrderDetails from "./pages/Admin/AdminOrderDetails/AdminOrderDetails";
-import AdminChat from "./pages/Admin/AdminChat/AdminChat";
+import AdminOrders from "./pages/Admin/AdminOrders/AdminOrders";
+import AdminProducts from "./pages/Admin/AdminProducts/AdminProducts";
+import AdminUser from "./pages/Admin/AdminUser/AdminUser";
 
 import AdminAnalytics from "./pages/Admin/AdminAnalytics/AdminAnalytics";
 //Components
-import ProtectedRoutesComponent from "./components/ProtectedRoutesComponent";
-import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Header from "./components/Header";
+import ProtectedRoutesComponent from "./components/ProtectedRoutesComponent";
 //User Components
 import RoutesWithChatComponent from "./components/User/RoutesWithChatComponent";
 //bootstrap
@@ -71,6 +71,7 @@ function App() {
           <Route path="/admin/analytics" exact element={<AdminAnalytics />} />
         </Route>
       </Routes>
+      <div style={{marginTop:200}}></div>
       <Footer />
     </BrowserRouter>
   );
