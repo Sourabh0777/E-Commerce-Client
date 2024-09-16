@@ -22,6 +22,7 @@ const LoginPageComponent = ({ loginUserApiRequest, dispatch, loginUserAction }) 
       setLoginUserResponseState({ loading: true });
       loginUserApiRequest(email, password, doNotLogout)
         .then((res) => {
+          console.log("🚀 ~ .then ~ res:", res)
           setLoginUserResponseState({
             success: res.success,
             error: "",
@@ -29,7 +30,6 @@ const LoginPageComponent = ({ loginUserApiRequest, dispatch, loginUserAction }) 
           });
           if (res.success === "User logged in" && !res.userLoggedIn.isAdmin) {
             console.log("user Login");
-            
             dispatch(loginUserAction(res.userLoggedIn));
             navigate("/user", { replace: true });
           } else {

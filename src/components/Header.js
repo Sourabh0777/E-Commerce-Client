@@ -20,16 +20,18 @@ const DUMMY_DATA = {
 	option3: "Logout",
 }
 const Header = props => {
+	const {loginState} = useSelector(store => store.loginUser)
+
 	const cartCount = useSelector(store => store.cart.value)
 	const dispatch = useDispatch()
-  const navigate = useNavigate();
+	const navigate = useNavigate()
 
-	const logoutHandler = () => {
+	const logoutHandler = async () => {
+		document.cookie = "access_token=; expires= Thu, 01 Jan 1970 00:00:01 GMT; path=/"
 		localStorage.removeItem("userInfo")
 		sessionStorage.removeItem("userInfo")
 		dispatch(logoutUserAction())
-    navigate("/")
-
+		navigate("/")
 	}
 	return (
 		<Navbar collapseOnSelect expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
@@ -59,15 +61,21 @@ const Header = props => {
 						</InputGroup>
 					</Nav>
 					<Nav>
-						<LinkContainer to="/admin/orders">
-							<Nav.Link>Admin</Nav.Link>
-						</LinkContainer>
-						<LinkContainer to="/login">
-							<Nav.Link>Login</Nav.Link>
-						</LinkContainer>
-						<LinkContainer to="/register">
-							<Nav.Link>Register</Nav.Link>
-						</LinkContainer>
+						{loginState.isAdmin && (
+							<LinkContainer to="/admin/orders">
+								<Nav.Link>Admin</Nav.Link>
+							</LinkContainer>
+						)}
+						{!loginState.name && (
+							<>
+								<LinkContainer to="/login">
+									<Nav.Link>Login</Nav.Link>
+								</LinkContainer>
+								<LinkContainer to="/register">
+									<Nav.Link>Register</Nav.Link>
+								</LinkContainer>
+							</>
+						)}
 						<LinkContainer to="/cart">
 							<Nav.Link>
 								<Badge pill bg="danger">
@@ -77,19 +85,19 @@ const Header = props => {
 								Cart
 							</Nav.Link>
 						</LinkContainer>
-						<NavDropdown title={DUMMY_DATA.username} id="basic-nav-dropdown">
-							<NavDropdown.Item eventKey="/user" as={Link} to="/user">
-								{DUMMY_DATA.option1}
-							</NavDropdown.Item>
-							<NavDropdown.Item as={Link} to="/user/my-orders" eventKey="/user/my-orders">
-								{DUMMY_DATA.option2}
-							</NavDropdown.Item>
-							<NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
-							{/* <NavDropdown.Divider /> */}
-							{/* <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item> */}
-						</NavDropdown>
+						{loginState.name && (
+							<NavDropdown title={loginState.name} id="basic-nav-dropdown">
+								<NavDropdown.Item eventKey="/user" as={Link} to="/user">
+									{DUMMY_DATA.option1}
+								</NavDropdown.Item>
+								<NavDropdown.Item as={Link} to="/user/my-orders" eventKey="/user/my-orders">
+									{DUMMY_DATA.option2}
+								</NavDropdown.Item>
+								<NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
+								<NavDropdown.Divider />
+								<NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+							</NavDropdown>
+						)}
 					</Nav>
 				</Navbar.Collapse>
 			</Container>

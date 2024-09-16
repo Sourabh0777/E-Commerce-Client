@@ -14,7 +14,6 @@ export const loginUserSlice = createSlice({
 	initialState,
 	reducers: {
 		loginUserAction: (state, action) => {
-			console.log("🚀 ~ action:", action)
 			state.loginState = action.payload
 			return
 		},
